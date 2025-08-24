@@ -1,0 +1,65 @@
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Alexandria", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    background-image:url("books.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.main {
+    background-color: #dab785be;
+    backdrop-filter: blur(2px);
+    position: relative;
+    text-align: center;
+    width: 400px;
+    border: none;
+    border-radius: 20px;
+    margin: 0px auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+    color:#1d212a;
+    padding: 5px 0px 5px 0px;
+}
+
+.main p {
+    font-size: 17px;
+}
+
+.main input {
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.main input:active {
+    border: none;
+}
+
+.main button {
+    border: #408597 2px solid;
+    border-radius: 5px;
+    font-size: medium;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    background-color: #408597;
+    color: white;
+    transition: 0.15s;
+    padding: 5px 12px;
+    font-family: "Alexandria", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.main button:hover {
+    border: #408597 2px solid;
+    color: #408597;
+    background-color: white;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" contant="BookGo"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="script.js" defer></script>
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Readex+Pro:wght@160..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!--Font-->
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="main">
+            <h4>حساب معدل التوجيهي (الحادي عشر)</h4><br>
+            <div>
+                <p>اللغة العربية</p>
+                <input type="text" title="اللغة العربية" max="100" min="0" id="input1">
+                <p>اللغة الإنجليزية</p>
+                <input type="text" title="اللغة الانجليزية" max="100" min="0" id="input2">
+                <p>تاريخ الأردن</p>
+                <input type="text" title="تاريخ الأردن" max="40" min="0" id="input3">
+                <p>التربية الإسلامية</p>
+                <button type="button" onclick="toggleInput()">×</button>
+                <input type="text" title="التربية الإسلامية" max="60" min="0" id="input4"><br>
+                <button onclick="calculate()">احسب المعدل</button>
+                <p class="result" id="result"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
