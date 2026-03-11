@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="أداة حساب معدل التوجيهي الاحترافية"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>حساب معدل التوجيهي (الحادي عشر)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+    <link rel="stylesheet" href="style.css"/>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+    <script src="script.js" defer></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+</head>
+<body>
+    <div id="loader" class="loader-container">
+        <div class="spinner"></div>
+        <h2 class="loader-text">جاري التحميل...</h2>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" title="تبديل المظهر">🌙</button>
+
+    <main class="glass-panel">
+        <header>
+            <h2>حساب معدل التوجيهي</h2>
+            <p class="subtitle">الصّف الحادي عشر</p>
+        </header>
+        
+        <form id="calcForm" onsubmit="event.preventDefault();" autocomplete="off">
+            <div class="input-row">
+                <label for="input1">اللغة العربية</label>
+                <div class="input-wrap">
+                    <input type="number" max="100" min="0" id="input1" placeholder="العلامة">
+                </div>
+            </div>
+            
+            <div class="input-row">
+                <label for="input2">اللغة الإنجليزية</label>
+                <div class="input-wrap">
+                    <input type="number" max="100" min="0" id="input2" placeholder="العلامة">
+                </div>
+            </div>
+            
+            <div class="input-row">
+                <label for="input3">تاريخ الأردن</label>
+                <div class="input-wrap">
+                    <input type="number" max="40" min="0" id="input3" placeholder="العلامة">
+                </div>
+            </div>
+            
+            <div class="input-row">
+                <label for="input4">التربية الإسلامية</label>
+                <div class="input-wrap with-btn">
+                    <input type="number" max="60" min="0" id="input4" placeholder="العلامة">
+                    <button type="button" class="toggle-btn" id="toggleBtn" onclick="toggleInput()">إلغاء</button>
+                </div>
+            </div>
+        </form>
+        
+        <div id="result" class="result-container"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="social-icons">
+        <a href="https://github.com/najemh2006" target="_blank" aria-label="Github" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/najemhaddadin/" target="_blank" aria-label="linkedIn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/najem.haddadin6" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/najem.haddadin6" target="_blank" aria-label="Facebook" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
+        </div><br>
+        <p>© <span id="currentYear"></span> Najem Haddadin</p>
+    </footer>
+</body>
+</html>

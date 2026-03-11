@@ -1,0 +1,350 @@
+/* =========================================
+   1. المتغيرات (Variables)
+   ========================================= */
+:root {
+    --primary: #408597;
+    --primary-glow: rgba(64, 133, 151, 0.4);
+    --bg-glass: rgba(255, 255, 255, 0.748);
+    --text-main: #1d212a;
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --danger: #e74c3c;
+    --success: #106f36;
+    --border-radius: 8px;
+    --progress-bg: #e0e0e0;
+}
+
+[data-theme="dark"] {
+    --primary: #5ab1c7;
+    --primary-glow: rgba(90, 177, 199, 0.4);
+    --bg-glass: rgba(30, 33, 42, 0.793);
+    --text-main: #f5f6fa;
+    --input-bg: rgba(47, 53, 66, 0.9);
+    --progress-bg: #4b4b4b;
+    --danger: #ff6b6b;
+    --success: #2ed573;
+}
+
+/* =========================================
+   2. الإعدادات العامة (Global Reset)
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; 
+    font-family: "Alexandria", sans-serif;
+}
+
+body {
+    background-image: url("books.jpg"); /* تأكد من وجود الصورة في نفس المجلد */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+/* =========================================
+   3. شاشة التحميل (Loader)
+   ========================================= */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    width: 55px;
+    height: 55px;
+    border: 5px solid rgba(64, 133, 151, 0.2);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loader-text {
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* =========================================
+   4. زر الوضع الليلي واللوحة الزجاجية
+   ========================================= */
+.theme-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: var(--bg-glass);
+    border: none;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: transform 0.2s;
+}
+
+.theme-toggle:hover { transform: scale(1.1); }
+
+.glass-panel {
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 92%;
+    max-width: 380px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 20px;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+header { text-align: center; margin-bottom: 20px; }
+header h2 { font-size: 18px; color: var(--primary); margin-bottom: 3px; }
+.subtitle { font-size: 12px; opacity: 0.7; }
+
+/* =========================================
+   5. حقول الإدخال (Inputs & Forms)
+   ========================================= */
+.input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 15px; 
+}
+
+.input-row label {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap; 
+}
+
+.input-wrap {
+    flex: 2.2; 
+    display: flex;
+}
+
+.with-btn { gap: 8px; }
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 14px;
+    text-align: center;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus { 
+    outline: none; 
+    border-color: var(--primary); 
+    box-shadow: 0 0 8px var(--primary-glow);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield; 
+}
+
+input[type="number"].invalid { border-color: var(--danger); box-shadow: 0 0 8px rgba(231, 76, 60, 0.4); }
+input[type="number"]:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.toggle-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    padding: 0 12px;
+    font-size: 12px;
+    font-family: inherit;
+    transition: background-color 0.2s;
+}
+.toggle-btn:hover { filter: brightness(1.1); }
+.toggle-btn.active { background-color: var(--success); }
+
+/* =========================================
+   6. قسم النتيجة (Result Section)
+   ========================================= */
+.result-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* إعدادات الحركة (الأنيميشن) قبل الظهور */
+    opacity: 0;
+    max-height: 0;         /* إخفاء الارتفاع */
+    margin-top: 0;
+    padding-top: 0;
+    overflow: hidden;      /* لمنع خروج العناصر أثناء الاختفاء */
+    transform: translateY(-15px) scale(0.95); /* إزاحة خفيفة للأعلى وتصغير */
+    border-top: 1px solid transparent;
+    /* توقيت ونوع الحركة */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.result-container.show {
+    /* إعدادات الحركة (الأنيميشن) عند الظهور */
+    opacity: 1;
+    max-height: 150px;     /* إعطاء مساحة كافية للنتيجة */
+    margin-top: 20px;
+    padding-top: 15px;
+    transform: translateY(0) scale(1); /* العودة للحجم والمكان الطبيعي */
+    border-top: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.circular-progress {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s linear;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--bg-glass);
+}
+
+.progress-value {
+    position: relative;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.stats { text-align: right; flex: 1; margin-left: 15px; }
+.stats p { margin: 5px 0; font-size: 13px; }
+.feedback-msg { font-weight: bold; font-size: 14px; margin-top: 5px; }
+
+/* حركة الاهتزاز عند الخطأ */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+input[type="number"].shake-error {
+    animation: shake 0.3s ease-in-out;
+    border-color: var(--danger);
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+}
+
+/* =========================================
+   7. تذييل الصفحة (Footer & Social Icons)
+   ========================================= */
+.site-footer {
+    position: fixed; 
+    bottom: 20px;    
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-footer p {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6); 
+}
+
+[data-theme="dark"] .site-footer p {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-main);
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 8px 15px var(--primary-glow);
+}
+
+[data-theme="dark"] .social-icons a {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
